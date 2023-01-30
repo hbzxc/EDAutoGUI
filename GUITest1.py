@@ -1,3 +1,9 @@
+# %%
+#%pip install 
+#%pip install olefile
+#%pip install pyprctl
+
+# %%
 # Import the required libraries
 import tkinter as tk
 import tkinter.scrolledtext as st
@@ -40,6 +46,7 @@ except:
 #set the scan settings
 set_scan_btn(nToggle.scan_fire)
 
+# %%
 class TextHandler(logging.Handler):
     # This class allows you to log to a Tkinter Text or ScrolledText widget
     # Adapted from Moshe Kaplan: https://gist.github.com/moshekaplan/c425f861de7bbf28ef06
@@ -58,11 +65,12 @@ class TextHandler(logging.Handler):
         # This is necessary because we can't modify the Text from other threads
         self.text.after(0, append)
 
+# %%
 def start_action():
     stop_action()
     toggle_on()
     to_console("Toggle on")
-    kthread(target = autopilot(nToggle), name = "EDAutopilot").start()
+    kthread(target = autopilot(nToggle, active_text, auto_status), name = "EDAutopilot").start()
             
 def stop_action():
     toggle_off()
@@ -110,6 +118,7 @@ def to_console(string, *rName):
 keyboard.add_hotkey('home', start_action)
 keyboard.add_hotkey('end', stop_action)
 
+# %%
 text_color = '#e08533'
 bg_color = 'black'
 bg_hover = '#e08533'
@@ -430,3 +439,5 @@ win.mainloop()
 settings_file = open("settings", "wb")
 pickle.dump(nToggle, settings_file)
 settings_file.close()
+
+

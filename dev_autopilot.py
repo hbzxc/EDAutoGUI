@@ -1030,7 +1030,8 @@ def align():
     
     logging.debug('align= speed 100')
     send(keys['SetSpeed100'])
-    send(keys[scanner], state=1)
+    if (ship()['status'] == 'in_supercruise'):
+        send(keys[scanner], state=1)
     
     logging.debug('align= avoid sun')
     while sun_percent() > 5:
@@ -1271,7 +1272,7 @@ def position(refueled_multiplier=1):
 # In[236]:
 
 
-def autopilot(nToggle):
+def autopilot(nToggle, active_text, auto_status):
     logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT START '+179*'-'+'\n'+200*'-')
     logging.info('get_latest_log='+str(get_latest_log(PATH_LOG_FILES)))
     print("it be working")
@@ -1293,6 +1294,8 @@ def autopilot(nToggle):
             else:
                 position(refueled_multiplier=1)
     send(keys['SetSpeedZero'])
+    active_text.set("INACTIVE")
+    auto_status["fg"] = 'red'
     logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT END '+181*'-'+'\n'+200*'-')
 
 
