@@ -1,0 +1,54 @@
+2023-01-29 17:13:04,803 - INFO - Current time: Sun Jan 29 17:13:04 2023
+2023-01-29 17:13:06,811 - INFO - Current time: Sun Jan 29 17:13:06 2023
+2023-01-29 17:13:08,823 - INFO - Current time: Sun Jan 29 17:13:08 2023
+2023-01-29 17:13:10,837 - INFO - Current time: Sun Jan 29 17:13:10 2023
+2023-01-29 17:13:12,846 - INFO - Current time: Sun Jan 29 17:13:12 2023
+2023-01-29 17:13:14,858 - INFO - Current time: Sun Jan 29 17:13:14 2023
+2023-01-29 17:13:17,918 - DEBUG - This is a DEBUG message. These information is usually used for troubleshooting
+2023-01-29 17:13:17,918 - INFO - This is an INFO message. These information is usually used for conveying information
+2023-01-29 17:13:17,918 - WARNING - some warning message. These information is usually used for warning
+2023-01-29 17:13:17,921 - ERROR - some error message. These information is usually used for errors and should not happen
+2023-01-29 17:13:17,922 - CRITICAL - some critical message. These information is usually used for critical error, and will usually result in an exception.
+2023-01-29 17:13:17,922 - INFO - 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- AUTOPILOT DATA ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2023-01-29 17:13:17,923 - INFO - RELEASE=v19.05.15-alpha-18
+2023-01-29 17:13:17,923 - INFO - PATH_LOG_FILES=None
+2023-01-29 17:13:17,924 - INFO - PATH_KEYBINDINGS=None
+2023-01-29 17:13:17,924 - INFO - KEY_MOD_DELAY=0.01
+2023-01-29 17:13:17,925 - INFO - KEY_DEFAULT_DELAY=0.2
+2023-01-29 17:13:17,925 - INFO - KEY_REPEAT_DELAY=0.1
+2023-01-29 17:13:17,926 - INFO - FUNCTION_DEFAULT_DELAY=0.5
+2023-01-29 17:13:17,927 - INFO - SCREEN_WIDTH=1920
+2023-01-29 17:13:17,927 - INFO - SCREEN_HEIGHT=1080
+2023-01-29 17:13:17,934 - INFO - get_latest_log=C:\Users\4d3d3d3\Saved Games\Frontier Developments\Elite Dangerous\Journal.2023-01-26T200109.01.log
+2023-01-29 17:13:17,942 - DEBUG - ship={'time': 76122, 'status': 'in_supercruise', 'type': 'type6', 'location': 'Wredguia DT-H b37-2', 'star_class': 'M', 'target': 'Wredguia YN-S c17-6', 'fuel_capacity': 16.0, 'fuel_level': 11.635098, 'fuel_percent': 73, 'is_scooping': False}
+2023-01-29 17:13:17,943 - INFO - get_latest_keybinds=C:\Users\4d3d3d3\AppData\Local\Frontier Developments\Elite Dangerous\Options\Bindings\Custom.4.0.binds
+2023-01-29 17:13:17,946 - INFO - get_bindings_<YawLeftButton>={'pre_key': 'DIK_A', 'key': 30}
+2023-01-29 17:13:17,946 - INFO - get_bindings_<YawRightButton>={'pre_key': 'DIK_D', 'key': 32}
+2023-01-29 17:13:17,947 - INFO - get_bindings_<RollLeftButton>={'pre_key': 'DIK_LEFTARROW', 'key': 203}
+2023-01-29 17:13:17,948 - INFO - get_bindings_<RollRightButton>={'pre_key': 'DIK_RIGHTARROW', 'key': 205}
+2023-01-29 17:13:17,948 - INFO - get_bindings_<PitchUpButton>={'pre_key': 'DIK_UPARROW', 'key': 200}
+2023-01-29 17:13:17,949 - INFO - get_bindings_<PitchDownButton>={'pre_key': 'DIK_DOWNARROW', 'key': 208}
+2023-01-29 17:13:17,949 - INFO - get_bindings_<SetSpeedZero>={'pre_key': 'DIK_X', 'key': 45}
+2023-01-29 17:13:17,950 - INFO - get_bindings_<SetSpeed100>={'pre_key': 'DIK_GRAVE', 'key': 41}
+2023-01-29 17:13:17,950 - INFO - get_bindings_<HyperSuperCombination>={'pre_key': 'DIK_J', 'key': 36}
+2023-01-29 17:13:17,951 - INFO - get_bindings_<UIFocus>={'pre_key': 'DIK_I', 'key': 23}
+2023-01-29 17:13:17,951 - INFO - get_bindings_<UI_Up>={'pre_key': 'DIK_W', 'key': 17}
+2023-01-29 17:13:17,952 - INFO - get_bindings_<UI_Down>={'pre_key': 'DIK_S', 'key': 31}
+2023-01-29 17:13:17,952 - INFO - get_bindings_<UI_Left>={'pre_key': 'DIK_A', 'key': 30}
+2023-01-29 17:13:17,953 - INFO - get_bindings_<UI_Right>={'pre_key': 'DIK_D', 'key': 32}
+2023-01-29 17:13:17,953 - INFO - get_bindings_<UI_Select>={'pre_key': 'DIK_SPACE', 'key': 57}
+2023-01-29 17:13:17,954 - INFO - get_bindings_<UI_Back>={'pre_key': 'DIK_BACKSPACE', 'key': 14}
+2023-01-29 17:13:17,955 - INFO - get_bindings_<CycleNextPanel>={'pre_key': 'DIK_E', 'key': 18}
+2023-01-29 17:13:17,955 - INFO - get_bindings_<HeadLookReset>={'pre_key': 'DIK_H', 'key': 35}
+2023-01-29 17:13:17,956 - INFO - get_bindings_<PrimaryFire>={'pre_key': 'DIK_BACKSLASH', 'key': 43, 'pre_mod': 'DIK_LSHIFT', 'mod': 42}
+2023-01-29 17:13:17,956 - INFO - get_bindings_<SecondaryFire>={'pre_key': 'DIK_SLASH', 'key': 53, 'pre_mod': 'DIK_LSHIFT', 'mod': 42}
+2023-01-29 17:13:17,957 - INFO - get_bindings_<MouseReset>={'pre_key': 'DIK_I', 'key': 23, 'pre_mod': 'DIK_LSHIFT', 'mod': 42}
+2023-01-29 17:13:22,298 - INFO - 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- AUTOPILOT START -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2023-01-29 17:13:41,856 - INFO - Current time: Sun Jan 29 17:13:41 2023
+2023-01-29 17:15:52,308 - INFO - Current time: Sun Jan 29 17:15:52 2023
