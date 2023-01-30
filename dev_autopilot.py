@@ -42,6 +42,7 @@ from src.directinput import * # see reference 5
 from pyautogui import size# see reference 6
 import logging
 import colorlog
+import threading
 
 RELEASE = 'v19.05.15-alpha-18'
 PATH_LOG_FILES = None
@@ -90,16 +91,17 @@ handler.setFormatter(
     ))
 logger.addHandler(handler)
 
-logger.debug('This is a DEBUG message. These information is usually used for troubleshooting')
-logger.info('This is an INFO message. These information is usually used for conveying information')
-logger.warning('some warning message. These information is usually used for warning')
-logger.error('some error message. These information is usually used for errors and should not happen')
-logger.critical('some critical message. These information is usually used for critical error, and will usually result in an exception.')
+def load_logging_1():
+    logger.debug('This is a DEBUG message. These information is usually used for troubleshooting')
+    logger.info('This is an INFO message. These information is usually used for conveying information')
+    logger.warning('some warning message. These information is usually used for warning')
+    logger.error('some error message. These information is usually used for errors and should not happen')
+    logger.critical('some critical message. These information is usually used for critical error, and will usually result in an exception.')
 
 
     # In[184]:
 
-def load_logging_1():
+
     logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT DATA '+180*'-'+'\n'+200*'-')
 
 
@@ -301,11 +303,8 @@ keys_to_obtain = [
         'HeadLookReset',
         'PrimaryFire',
         'SecondaryFire',
-        'MouseReset'
+        'MouseReset',
     ]
-
-def keybind():
-    return keys_to_obtain
 
 def get_bindings(keys_to_obtain=keys_to_obtain):
     """Returns a dict struct with the direct input equivalent of the necessary elite keybindings"""
@@ -368,14 +367,19 @@ def get_bindings(keys_to_obtain=keys_to_obtain):
 
 
 # In[193]:
+keys = get_bindings()
 
-def load_logging_5():
+def load_keys():
     keys = get_bindings()
+    key_dict = {}
     for key in keys_to_obtain:
         try:
             logging.debug('get_bindings_<'+str(key)+'>='+str(keys[key]))
+            key_dict.update({key : 1})
         except Exception as e:
             logging.warning(str("get_bindings_<"+key+">= does not have a valid keyboard keybind.").upper())
+            key_dict.update({key : 0})
+    return key_dict
 
 
 # ## Direct input function
@@ -1026,6 +1030,7 @@ def align():
     
     logging.debug('align= speed 100')
     send(keys['SetSpeed100'])
+    send(keys[scanner], state=1)
     
     logging.debug('align= avoid sun')
     while sun_percent() > 5:
@@ -1110,7 +1115,7 @@ def align():
             sleep(0.25)
         if not off:
             return
-    
+    send(keys[scanner], state=0)
     logging.debug('align=complete')
 
 
@@ -1209,16 +1214,9 @@ def refuel(refuel_threshold):
 # In[233]:
 
 
-scanner = 0
-
-def set_scanner(state):
-    scanner = state
-    logging.info('set_scanner='+str(state))
-
-def get_scanner():
-    from dev_tray import STATE
-    return STATE
-
+def set_scan_btn(selection):
+    global scanner
+    scanner = selection
 
 # ### Position
 
@@ -1228,7 +1226,7 @@ def get_scanner():
 def position(refueled_multiplier=1):
     logging.debug('position')
     logging.debug('position=scanning')
-    send(keys['PrimaryFire'], state=1)
+    send(keys[scanner], state=1)
     send(keys['PitchUpButton'], state=1)
     sleep(5)
     send(keys['PitchUpButton'], state=0)
@@ -1240,7 +1238,7 @@ def position(refueled_multiplier=1):
     send(keys['PitchUpButton'], state=0)
     sleep(5*refueled_multiplier)
     logging.debug('position=scanning complete')
-    send(keys['PrimaryFire'], state=0)
+    send(keys[scanner], state=0)
     logging.debug('position=complete')
     return True
 
@@ -1276,17 +1274,19 @@ def position(refueled_multiplier=1):
 def autopilot(nToggle):
     logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT START '+179*'-'+'\n'+200*'-')
     logging.info('get_latest_log='+str(get_latest_log(PATH_LOG_FILES)))
+    print("it be working")
     logging.debug('ship='+str(ship()))
 #     if ship()['target']:
 #         undock()
     while ship()['target']:
+        print("it still be working")
         if ship()['status'] == 'in_space' or ship()['status'] == 'in_supercruise':
             logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT ALIGN '+179*'-'+'\n'+200*'-')
             align()
             logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT JUMP '+180*'-'+'\n'+200*'-')
             jump()
             logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT REFUEL '+178*'-'+'\n'+200*'-')
-            refueled = refuel(nToggle)
+            refueled = refuel(nToggle.fuel)
             logging.info('\n'+200*'-'+'\n'+'---- AUTOPILOT POSIT '+179*'-'+'\n'+200*'-')
             if refueled:
                 position(refueled_multiplier=4)
